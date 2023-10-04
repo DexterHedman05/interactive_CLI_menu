@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Upload Python Package
+name: interactive_CLI_menu
 
 on:
   release:
@@ -18,7 +18,7 @@ permissions:
 jobs:
   deploy:
 
-    runs-on: github
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -36,4 +36,4 @@ jobs:
       uses: pypa/gh-action-pypi-publish@main
       with:
         user: __token__
-        password: "pypi-AgEIcHlwaS5vcmcCJGM3ZDYxZTZlLTg5ZTMtNGYyNC1iNDZiLTg2NGQ2YzJmN2IxNQACHFsxLFsiaW50ZXJhY3RpdmUtY2xpLW1lbnUiXV0AAixbMixbIjhjNjYyM2QxLTdlZDctNGY1Mi05OGRlLTc3NGI5MDlhNGI5NCJdXQAABiAFwNwh2fkO-adYI6n2-mTgOULJUVH4I-ZQcmFiWYDR3g"
+        password: pypi-AgEIcHlwaS5vcmcCJGM3ZDYxZTZlLTg5ZTMtNGYyNC1iNDZiLTg2NGQ2YzJmN2IxNQACHFsxLFsiaW50ZXJhY3RpdmUtY2xpLW1lbnUiXV0AAixbMixbIjhjNjYyM2QxLTdlZDctNGY1Mi05OGRlLTc3NGI5MDlhNGI5NCJdXQAABiAFwNwh2fkO-adYI6n2-mTgOULJUVH4I-ZQcmFiWYDR3g
