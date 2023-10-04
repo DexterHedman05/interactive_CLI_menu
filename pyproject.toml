@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "interactive_CLI_menu"
-version = "0.0.4"
+version = "0.0.5"
 authors = [
   { name="DexterH", email="dexterhedman05@gmail.com" },
 ]
