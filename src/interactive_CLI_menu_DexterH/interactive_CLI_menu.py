@@ -2,37 +2,9 @@ import curses
 from os import system
 from msvcrt import getch
 
-colors = [
-    "\x1B[38;5;255m",
-    "\x1B[38;5;196m"
-    ]
-
 new_line = "\n"
 
-print (colors[0])
-
-def disclaimer(text : str):
-    row_length = 60
-    text = text.replace("\n", " END ")
-    text = text.split()
-    row = ""
-    final = f"+{('-' * (row_length + 2))}+\n|  {' ' * row_length}|\n| {colors[1]}{'DISCLAIMER'.center(row_length)}{colors[0]} |\n|  {' ' * row_length}|\n+{('-' * (row_length + 2))}+\n"
-
-    for i in range(len(text)):
-        row += f"{text[i]} "
-
-        if (0 <= i + 1 < len(text) and len(row + text[i+1]) > int(row_length / 1.5) or text[i] == "END" or i == len(text) - 1):
-            final += f"| {(row.strip()).center(row_length)} |\n"
-            row = "" 
-
-    final += f"+{('-' * (row_length + 2))}+"
-
-    final = final.replace("END", "   ")
-
-    print (final)
-
 def single(title : str, options : list):
-    disclaimer(f"A little tip to help you navigate the menus :)\n\n1. Use the UP ARROW and DOWN ARROW to navigate the menu\n\n2. To select an item, press ENTER")
     system("pause")
     system("cls")
 
@@ -76,7 +48,6 @@ def single(title : str, options : list):
     return curses.wrapper(menu)
 
 def multi(title : str, options : list):
-    disclaimer(f"A little tip to help you navigate the menus :)\n\n1. Use the UP ARROW and DOWN ARROW to navigate the menu\n\n2. To select an item, press SPACE\n\n3. To confirm your choices, press ENTER")
     system("pause")
     system("cls")
 
@@ -129,7 +100,6 @@ def multi(title : str, options : list):
     return curses.wrapper(menu)
 
 def mix(title : str, options : list):
-    disclaimer(f"A little tip to help you navigate the menus :)\n\n1. Use the UP ARROW and DOWN ARROW to navigate the menu\n\n2. To select an item, press SPACE\n\n3. To use the sliders, press SPACE to select, then use LEFT ARROW and RIGHT ARROW to move the slider up and down\n\nTo confirm your choices, press ENTER")
     system("pause")
     system("cls")
 
@@ -227,7 +197,7 @@ def mix(title : str, options : list):
 
     return curses.wrapper(menu)
 
-def select_value(title: str, options : list):
+def amount(title: str, options : list):
     def menu(window):
         pointer = 0
         selected = []
@@ -364,5 +334,5 @@ if (__name__ == "__main__"):
     single("Welcome to [ENTER NAME] Bank!\n\nWhat would you like to do?", ["See amount", "Withdraw", "Deposit", "Exit"])
     multi("General", ["Legacy Controls", "Fullscreen", "Unlock FPS", "VSync"])
     mix("Audio", [["Dynamic sounds", "TOGGLE"], ["Master Volume", "SLIDER", 20, 10], ["Music", "SLIDER", 20, 20], ["Subtitles", "TOGGLE"]])
-    select_value("Market", [["Meth", False, 20, 1], ["Weed", False, 20, 1]])
+    amount("Market", [["Meth", False, 20, 1], ["Weed", False, 20, 1]])
     pass
